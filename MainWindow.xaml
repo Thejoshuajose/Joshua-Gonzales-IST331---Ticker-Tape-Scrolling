@@ -1,0 +1,26 @@
+﻿<Window x:Name="WinTickerTape" x:Class="Joshua_Gonzales___IST331___Ticker_Tape_Scrolling.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Joshua_Gonzales___IST331___Ticker_Tape_Scrolling"
+        mc:Ignorable="d"
+        Title="IST 331 - Ticker Tape Display" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Left" Height="36" Margin="42,348,0,0" VerticalAlignment="Top" Width="90" Click="btnStart_Click" IsEnabled="False"/>
+        <Button x:Name="btnStop" Content="Stop" HorizontalAlignment="Left" Height="36" Margin="42,348,0,0" VerticalAlignment="Top" Width="90"  Visibility="Hidden" Click="btnStop_Click"/>
+        <Button x:Name="btnClear" Content="Clear" Height="29" Margin="42,55,679,0" VerticalAlignment="Top" Click="btnClear_Click"/>
+        <ListBox x:Name="lstStocksToChoose" HorizontalAlignment="Left" Height="148" Margin="196,190,0,0" VerticalAlignment="Top" Width="120" d:ItemsSource="{d:SampleData ItemCount=5}" GotFocus="lstStocksToChoose_GotFocus"/>
+        <ListBox x:Name="lstStocksChosen" HorizontalAlignment="Left" Height="148" Margin="473,190,0,0" VerticalAlignment="Top" Width="120" d:ItemsSource="{d:SampleData ItemCount=5}" GotFocus="lstStocksChosen_GotFocus"/>
+        <Slider x:Name="sldTickerSpeed" HorizontalAlignment="Center" Height="18" Margin="0,366,0,0" VerticalAlignment="Top" Width="286" TickFrequency="100" Maximum="1000" Minimum="200" ValueChanged="sldTickerSpeed_ValueChanged" Value="200" IsSnapToTickEnabled="True"/>
+        <Label x:Name="lblStocksToChoose" Content="Stocks to Choose From:" HorizontalAlignment="Left" Height="26" Margin="188,159,0,0" VerticalAlignment="Top" Width="136"/>
+        <Label x:Name="lblStocksChosen" Content="    Stocks Chosen:" HorizontalAlignment="Left" Height="26" Margin="473,159,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblTickerTime" Content="Ticker Tape Speed" HorizontalAlignment="Center" Height="26" Margin="0,380,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Height="30" Margin="352,308,0,0" VerticalAlignment="Top" Width="79" Click="btnAdd_Click" Visibility="Hidden"/>
+        <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Height="30" Margin="352,308,0,0" VerticalAlignment="Top" Width="79" Visibility="Hidden" Click="btnRemove_Click"/>
+        <TextBox x:Name="txtScrolling" HorizontalAlignment="Left" Height="44" Margin="254,55,0,0" TextWrapping="Wrap" Text="Stocks Scrolling..." VerticalAlignment="Top" Width="276" FontSize="20" Focusable="False"/>
+        <Button x:Name="btnExit" Content="Exit" Height="36" Margin="639,348,71,0" VerticalAlignment="Top" Click="btnExit_Click"/>
+        <Label x:Name="lblTickerSpeed" Content="200" HorizontalAlignment="Left" Height="27" Margin="340,348,0,0" VerticalAlignment="Top" Width="97" FontSize="10" HorizontalContentAlignment="Center"/>
+
+    </Grid>
+</Window>
