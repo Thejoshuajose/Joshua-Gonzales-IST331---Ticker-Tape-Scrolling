@@ -23,6 +23,7 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
         List<object> stockTickerList = new List<object>();
         DispatcherTimer testTimer = new DispatcherTimer();
         private int currentPosition = 0;
+        private string stockInfo = "";
 
 
         public MainWindow()
@@ -61,6 +62,7 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
             {
                 Console.WriteLine("Executing final Stock.");
             }
+            always_Running();
 
 
         }
@@ -79,7 +81,7 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
             {
                 btnAdd.IsEnabled = false;
             }
-            lblTickerSpeed.Content = sldTickerSpeed.Value.ToString();
+            lblTickerSpeed.Content = (1200 - sldTickerSpeed.Value).ToString();
         }
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
@@ -92,6 +94,8 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
             always_Running();
             stockTickerBody();
             testTimer.Start();
+            stockInfo = "";
+
 
         }
 
@@ -105,12 +109,17 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
             btnStart.Visibility = Visibility.Visible;
             always_Running();
             testTimer.Stop();
+            stockInfo = "";
+            stockTickerList.Clear();
+
+
 
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
             InitializeStocks();
+            always_Running();
 
             btnAdd.Visibility = Visibility.Hidden;
             btnRemove.Visibility = Visibility.Hidden;
@@ -119,6 +128,12 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
             lstStocksChosen.Items.Clear();
             currentPosition = 0;
             txtScrolling.Clear();
+            testTimer.Stop();
+            stockTickerList.Clear();
+            btnStart.IsEnabled = false;
+            stockInfo = "";
+            stockTickerList.Clear();
+
 
 
         }
@@ -126,6 +141,7 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
 
+            stockInfo = "";
 
             if (!lstStocksChosen.Items.Contains(lstStocksToChoose.SelectedItem))
             {
@@ -145,9 +161,16 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
             if (lstStocksChosen.SelectedItem != null)
             {
                 lstStocksChosen.Items.Remove(lstStocksChosen.SelectedItem);
+                stockTickerList.Remove(lstStocksChosen.SelectedItem);
+                txtScrolling.Clear();
+                stockTickerBody();
 
             }
             always_Running();
+            stockInfo = "";
+            stockTickerList.Clear();
+
+
 
         }
 
@@ -203,18 +226,21 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
         {
             always_Running();
 
-            string stockInfo = "";
 
             for (int i = 0; i < stockTickerList.Count; i++)
 
             {
                 stockInfo += " | " + stockTickerList[i] + " | ";
             }
-            currentPosition++;
-            if (currentPosition >= stockInfo.Length)
-                currentPosition = 0;
+            if(stockTickerList.Count > 2)
+            { 
 
-            stockInfo = stockInfo.Substring(currentPosition) + stockInfo.Substring(0, currentPosition);
+                currentPosition++;
+                if (currentPosition >= stockInfo.Length)
+                    currentPosition = 0;
+
+                stockInfo = stockInfo.Substring(currentPosition) + stockInfo.Substring(0, currentPosition); 
+            }
             txtScrolling.Text = stockInfo;
 
         }

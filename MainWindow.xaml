@@ -12,7 +12,16 @@
         <Button x:Name="btnClear" Content="Clear" Height="29" Margin="42,55,679,0" VerticalAlignment="Top" Click="btnClear_Click"/>
         <ListBox x:Name="lstStocksToChoose" HorizontalAlignment="Left" Height="148" Margin="196,190,0,0" VerticalAlignment="Top" Width="120" d:ItemsSource="{d:SampleData ItemCount=5}" GotFocus="lstStocksToChoose_GotFocus"/>
         <ListBox x:Name="lstStocksChosen" HorizontalAlignment="Left" Height="148" Margin="473,190,0,0" VerticalAlignment="Top" Width="120" d:ItemsSource="{d:SampleData ItemCount=5}" GotFocus="lstStocksChosen_GotFocus"/>
-        <Slider x:Name="sldTickerSpeed" HorizontalAlignment="Center" Height="18" Margin="0,366,0,0" VerticalAlignment="Top" Width="286" TickFrequency="100" Maximum="1000" Minimum="200" ValueChanged="sldTickerSpeed_ValueChanged" Value="200" IsSnapToTickEnabled="True"/>
+        <Slider x:Name="sldTickerSpeed" HorizontalAlignment="Center" Height="18" Margin="0,366,0,0" VerticalAlignment="Top" Width="286" TickFrequency="100" Maximum="1000" Minimum="200" ValueChanged="sldTickerSpeed_ValueChanged" Value="200" IsSnapToTickEnabled="True" RenderTransformOrigin="0.5,0.5">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
         <Label x:Name="lblStocksToChoose" Content="Stocks to Choose From:" HorizontalAlignment="Left" Height="26" Margin="188,159,0,0" VerticalAlignment="Top" Width="136"/>
         <Label x:Name="lblStocksChosen" Content="    Stocks Chosen:" HorizontalAlignment="Left" Height="26" Margin="473,159,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lblTickerTime" Content="Ticker Tape Speed" HorizontalAlignment="Center" Height="26" Margin="0,380,0,0" VerticalAlignment="Top" Width="120"/>
