@@ -18,7 +18,7 @@
         <Label x:Name="lblTickerTime" Content="Ticker Tape Speed" HorizontalAlignment="Center" Height="26" Margin="0,380,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Height="30" Margin="352,308,0,0" VerticalAlignment="Top" Width="79" Click="btnAdd_Click" Visibility="Hidden"/>
         <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Height="30" Margin="352,308,0,0" VerticalAlignment="Top" Width="79" Visibility="Hidden" Click="btnRemove_Click"/>
-        <TextBox x:Name="txtScrolling" HorizontalAlignment="Left" Height="44" Margin="254,55,0,0" TextWrapping="Wrap" Text="Stocks Scrolling..." VerticalAlignment="Top" Width="276" FontSize="20" Focusable="False"/>
+        <TextBox x:Name="txtScrolling" HorizontalAlignment="Left" Height="35" Margin="232,49,0,0" TextWrapping="Wrap" Text="Stocks Scrolling..." VerticalAlignment="Top" Width="318" FontSize="20" Focusable="False" FontStyle="Italic"/>
         <Button x:Name="btnExit" Content="Exit" Height="36" Margin="639,348,71,0" VerticalAlignment="Top" Click="btnExit_Click"/>
         <Label x:Name="lblTickerSpeed" Content="200" HorizontalAlignment="Left" Height="27" Margin="340,348,0,0" VerticalAlignment="Top" Width="97" FontSize="10" HorizontalContentAlignment="Center"/>
 

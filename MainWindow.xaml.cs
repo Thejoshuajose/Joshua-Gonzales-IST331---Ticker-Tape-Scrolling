@@ -22,6 +22,7 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
         List<String> stockList = new List<String>();
         List<object> stockTickerList = new List<object>();
         DispatcherTimer testTimer = new DispatcherTimer();
+        private int currentPosition = 0;
 
 
         public MainWindow()
@@ -84,6 +85,8 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
         {
             btnStop.IsEnabled = true;
             btnStart.IsEnabled = false;
+            btnAdd.IsEnabled = false;
+            btnRemove.IsEnabled = false;
             btnStop.Visibility = Visibility.Visible;
             btnStart.Visibility = Visibility.Hidden;
             always_Running();
@@ -96,6 +99,8 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
         {
             btnStop.IsEnabled = false;
             btnStart.IsEnabled = true;
+            btnAdd.IsEnabled = true;
+            btnRemove.IsEnabled = true;
             btnStop.Visibility = Visibility.Hidden;
             btnStart.Visibility = Visibility.Visible;
             always_Running();
@@ -112,6 +117,10 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
             btnStop.Visibility = Visibility.Hidden;
             btnStart.Visibility = Visibility.Visible;
             lstStocksChosen.Items.Clear();
+            currentPosition = 0;
+            txtScrolling.Clear();
+
+
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -156,6 +165,7 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
             if (WinTickerTape.IsInitialized)
             {
                 always_Running();
+                testTimer.Interval = TimeSpan.FromMilliseconds(sldTickerSpeed.Value);
             }
         }
 
@@ -193,7 +203,20 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
         {
             always_Running();
 
-        }
+            string stockInfo = "";
 
+            for (int i = 0; i < stockTickerList.Count; i++)
+
+            {
+                stockInfo += " | " + stockTickerList[i] + " | ";
+            }
+            currentPosition++;
+            if (currentPosition >= stockInfo.Length)
+                currentPosition = 0;
+
+            stockInfo = stockInfo.Substring(currentPosition) + stockInfo.Substring(0, currentPosition);
+            txtScrolling.Text = stockInfo;
+
+        }
     }
 }
