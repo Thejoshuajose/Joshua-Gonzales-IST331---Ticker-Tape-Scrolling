@@ -217,12 +217,43 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
         {
             for (int i = 0; i < lstStocksChosen.Items.Count; i++)
             {
-                stockTickerList.Add(lstStocksChosen.Items.GetItemAt(i));
+                stockTickerList.Add(" | " + lstStocksChosen.Items.GetItemAt(i) + " | ");
 
             }
         }
 
         private void TestTimer_Tick(object sender, EventArgs e)
+        {
+            always_Running();
+            if (stockTickerList.Count <= 2)
+            {
+                txtScrolling.Text = string.Join("", stockTickerList); // Display all stock items without scrolling
+                return;
+            }
+            StringBuilder builder = new StringBuilder();
+            
+                for (int i = 0; i < stockTickerList.Count; i++)
+                {
+                    string stockItem = stockTickerList[i].ToString();
+                    if (currentPosition >= stockItem.Length)
+                        currentPosition = 0;
+
+                    // Append one character at a time
+                    for (int j = 0; j < stockItem.Length; j++)
+                    {
+                        char currentChar = stockItem[(currentPosition + j) % stockItem.Length];
+                        builder.Append(currentChar);
+                    }
+
+
+                }
+
+                currentPosition++;
+
+                txtScrolling.Text = builder.ToString();
+            }
+        
+        /*private void TestTimer_Tick(object sender, EventArgs e)
         {
             always_Running();
 
@@ -243,6 +274,6 @@ namespace Joshua_Gonzales___IST331___Ticker_Tape_Scrolling
             }
             txtScrolling.Text = stockInfo;
 
-        }
+        }*/
     }
 }
